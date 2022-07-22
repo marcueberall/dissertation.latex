@@ -1,2 +1,2 @@
 # dissertation-latex
-LaTeX document class for german dissertations
+LaTeX document class for doctoral dissertations
