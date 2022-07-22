@@ -1,17 +1,8 @@
 %
 % TODO
-%	GENERAL
-%		Implement a variable for name and title (like in \maketitle)
 %
 %	BIBTEX
 %		has the ibidem been used correctly?
-%
-%	HEADER AND FOOTER
-%		None on the title page
-%		None on the table of content
-%		None on the abstract
-%		Bibliography should have a separate page counter
-%		Use said variables in header and/or footer
 %
 
 \NeedsTeXFormat{LaTeX2e}
@@ -22,28 +13,46 @@
 
 \LoadClass[a4paper, 12pt]{book}
 
+%
 % LANGUAGE & ENCODING
+%
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[ngerman]{babel}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{comment}
 
+%
+% MISC
+%
+\RequirePackage{lipsum}
+
+\newenvironment{abstract}{}{}
+\RequirePackage{abstract}
+
+%
 % PDF FUNCTIONS
+%
 \RequirePackage[breaklinks=true,colorlinks=true,linkcolor=black,anchorcolor=black,citecolor=black,filecolor=black,menucolor=black,runcolor=black,urlcolor=black]{hyperref}
 
+%
 % INDEX
+%
 \RequirePackage{imakeidx}
 
 \makeindex
 
+%
 % DOCUMENT FORMATTING
+%
 \RequirePackage[a4paper, hmargin={3cm, 3cm}, vmargin={2.5cm, 2cm}, ignoreheadfoot=false]{geometry}
 \RequirePackage{setspace}
 \RequirePackage{parskip}
 
 \onehalfspacing
 
+%
 % HEADINGS
+%
 \RequirePackage{sectsty}
 \RequirePackage{titlesec}
 
@@ -58,44 +67,56 @@
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{5}
 
+%
 % QUOTES
+%
 \RequirePackage[german=quotes]{csquotes}
 \RequirePackage{etoolbox}
 
 \expandafter\def\expandafter\quote\expandafter{\quote\singlespacing}
 
+%
 % FOOTNOTES
+%
 \RequirePackage[hang, flushmargin]{footmisc}
 
+%
 % BIBLATEX
+%
 \RequirePackage[backend=biber, style=verbose-ibid, citetracker]{biblatex}
 
-\addbibresource{citavi/literatur.bib}
-
+%
 % HEADER & FOOTER
+%
 \RequirePackage{fancyhdr}
 
 \newcommand{\headfootfont}{\fontsize{10}{12}\selectfont}
-
-%\fancypagestyle{plain}{%
-%	\fancyhf{}%
-%	\fancyhead[R]{\headfootfont NAME HERE}%
-%	\fancyfoot[C]{\headfootfont \thepage} %
-%}
 
 \pagestyle{fancy}
 
 \lhead{\headfootfont}
 \chead{\headfootfont}
-\rhead{\headfootfont NAME HERE}
+\rhead{\headfootfont \@author}
 
 \lfoot{\headfootfont}
 \cfoot{\headfootfont\thepage}
 \rfoot{\headfootfont}
 
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+	\thispagestyle{fancy}%
+	\global\@topnum\z@
+	\@afterindentfalse
+	\secdef\@chapter\@schapter}
+
+%
 % COMMANDS
+%
 \RequirePackage{xifthen}
 
-\newcommand{\terminus}[2][]{%
-	\textsl{\ifthenelse{\equal{#1}{}}{\index{#2}}{\index{#1!#2}}#2}%
+\newcommand{\terminus}[2][]{
+	\textsl{\ifthenelse{\equal{#1}{}}{\index{#2}}{\index{#1!#2}}#2}
+}
+
+\newcommand{\printtableofcontents}{
+	\begingroup\makeatletter\let\ps@fancy\ps@plain\tableofcontents\clearpage\endgroup
 }
