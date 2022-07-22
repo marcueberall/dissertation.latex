@@ -77,17 +77,17 @@
 
 \newcommand{\headfootfont}{\fontsize{10}{12}\selectfont}
 
-\fancypagestyle{plain}{%
-	\fancyhf{}%
-	\fancyhead[R]{\headfootfont NAME HERE}%
-	\fancyfoot[C]{\headfootfont \thepage} %
-}
+%\fancypagestyle{plain}{%
+%	\fancyhf{}%
+%	\fancyhead[R]{\headfootfont NAME HERE}%
+%	\fancyfoot[C]{\headfootfont \thepage} %
+%}
 
 \pagestyle{fancy}
 
 \lhead{\headfootfont}
 \chead{\headfootfont}
-\rhead{\headfootfont Stefanie Ueberall}
+\rhead{\headfootfont NAME HERE}
 
 \lfoot{\headfootfont}
 \cfoot{\headfootfont\thepage}
