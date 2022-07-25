@@ -35,13 +35,6 @@
 \RequirePackage[breaklinks=true,colorlinks=true,linkcolor=black,anchorcolor=black,citecolor=black,filecolor=black,menucolor=black,runcolor=black,urlcolor=black]{hyperref}
 
 %
-% INDEX
-%
-\RequirePackage{imakeidx}
-
-\makeindex
-
-%
 % DOCUMENT FORMATTING
 %
 \RequirePackage[a4paper, hmargin={3cm, 3cm}, vmargin={2.5cm, 2cm}, ignoreheadfoot=false]{geometry}
@@ -75,10 +68,19 @@
 
 \expandafter\def\expandafter\quote\expandafter{\quote\singlespacing}
 
+\newcommand{\danishsinglequote}[1]{›#1‹}
+\newcommand{\danishdoublequote}[1]{»#1«}
+\newcommand{\frenchdoublequote}[1]{«#1»}
+\newcommand{\germansinglequote}[1]{‚#1‘}
+\newcommand{\germandoublequote}[1]{„#1“}
+
 %
 % FOOTNOTES
 %
 \RequirePackage[hang, flushmargin]{footmisc}
+
+\RequirePackage{chngcntr}
+\counterwithout{footnote}{chapter}
 
 %
 % BIBLATEX
@@ -115,8 +117,19 @@
 %
 \RequirePackage{xifthen}
 
-\newcommand{\terminus}[2][]{\textsl{\ifthenelse{\equal{#1}{}}{\index{#2}}{\index{#1!#2}}#2}}
+%\newcommand{\terminus}[2][]{\textsl{\ifthenelse{\equal{#1}{}}{\index{#2}}{\index{#1!#2}}#2}}
+\newcommand{\terminus}[1]{\textsl{#1}}
+\newcommand{\kursiv}[1]{\textsl{#1}}
 
 \newcommand{\printtableofcontents}{
 	\begingroup\makeatletter\let\ps@fancy\ps@plain\tableofcontents\clearpage\endgroup
 }
+
+%
+% COMMENTS
+%
+
+\RequirePackage{pdfcomment}
+\RequirePackage{xcolor}
+
+\newcommand{\kommentar}[1]{\pdfmargincomment[color=lime]{#1}}
