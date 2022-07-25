@@ -85,6 +85,8 @@
 %
 \RequirePackage[backend=biber, style=verbose-ibid, citetracker]{biblatex}
 
+\addbibresource{citavi/literatur.bib}
+
 %
 % HEADER & FOOTER
 %
@@ -113,9 +115,7 @@
 %
 \RequirePackage{xifthen}
 
-\newcommand{\terminus}[2][]{
-	\textsl{\ifthenelse{\equal{#1}{}}{\index{#2}}{\index{#1!#2}}#2}
-}
+\newcommand{\terminus}[2][]{\textsl{\ifthenelse{\equal{#1}{}}{\index{#2}}{\index{#1!#2}}#2}}
 
 \newcommand{\printtableofcontents}{
 	\begingroup\makeatletter\let\ps@fancy\ps@plain\tableofcontents\clearpage\endgroup
