@@ -23,6 +23,7 @@
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[ngerman]{babel}
+\RequirePackage[ngerman]{isodate} % [ngerman, num] if you want to swith to a pure numeric format
 \RequirePackage[T1]{fontenc}
 \RequirePackage{comment}
 
