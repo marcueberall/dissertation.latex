@@ -97,6 +97,7 @@
 
 \newcommand{\danishsinglequote}[1]{›#1‹}
 \newcommand{\danishdoublequote}[1]{»#1«}
+\newcommand{\frenchsinglequote}[1]{‹#1›}
 \newcommand{\frenchdoublequote}[1]{«#1»}
 \newcommand{\germansinglequote}[1]{‚#1‘}
 \newcommand{\germandoublequote}[1]{„#1“}
