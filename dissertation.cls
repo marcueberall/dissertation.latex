@@ -119,9 +119,15 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\RequirePackage[backend=biber, style=verbose-ibid, citetracker]{biblatex}
+\RequirePackage[backend=biber, style=authortitle-ibid, hyperref=true, isbn=false, doi=false]{biblatex}
 
 \addbibresource{citavi/literatur.bib}
+
+\DeclareFieldFormat*{title}{#1}
+\DeclareFieldFormat*{citetitle}{#1}
+
+\DeclareFieldFormat*{booktitle}{#1}
+\DeclareFieldFormat*{citebooktitle}{#1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
