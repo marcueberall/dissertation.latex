@@ -129,7 +129,7 @@
 %
 % HEADER & FOOTER
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%»«%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \RequirePackage{fancyhdr}
 
@@ -166,6 +166,13 @@
 \newcommand{\printtableofcontents}{
 	\begingroup\makeatletter\let\ps@fancy\ps@plain\tableofcontents\clearpage\endgroup
 }
+
+\RequirePackage{xargs}
+
+%\newcommandx{\parenfullcite}[3][1, 2]{(\fullcite[#2][#1]{#3})}
+
+\newcommandx{\parenfullcite}[3][1, 2]{(\ifthenelse{\equal{#2}{}}{\fullcite[#1]{#3}}{\fullcite[#1][#2]{#3}})}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
