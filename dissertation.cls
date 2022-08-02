@@ -129,8 +129,6 @@
 \DeclareFieldFormat*{booktitle}{#1}
 \DeclareFieldFormat*{citebooktitle}{#1}
 
-% CHANGE ORDER IN EDITOR FIELD FROM LASTNAME-NAME TO NAME-LASTNAME
-
 \DeclareNameAlias{sortname}{first-last}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
