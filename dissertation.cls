@@ -1,15 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% TODO
-%
-%	BIBTEX
-%		put the damn title as prefix infront of the first name in the reference section.
-%
-%	QUOTE
-%		nicify the quote indentation to only inner not outer
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{dissertation}
 
@@ -173,6 +161,7 @@
 
 %\newcommand{\terminus}[2][]{\textit{\ifthenelse{\equal{#1}{}}{\index{#2}}{\index{#1!#2}}#2}}
 \newcommand{\terminus}[1]{\textit{#1}}
+\newcommand{\kursiv}[1]{\textit{#1}}
 
 \newcommand{\printtableofcontents}{
 	\begingroup\makeatletter\let\ps@fancy\ps@plain\tableofcontents\clearpage\endgroup
