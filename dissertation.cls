@@ -171,8 +171,8 @@
 
 \RequirePackage{xifthen}
 
-%\newcommand{\terminus}[2][]{\textsl{\ifthenelse{\equal{#1}{}}{\index{#2}}{\index{#1!#2}}#2}}
-\newcommand{\terminus}[1]{\textsl{#1}}
+%\newcommand{\terminus}[2][]{\textit{\ifthenelse{\equal{#1}{}}{\index{#2}}{\index{#1!#2}}#2}}
+\newcommand{\terminus}[1]{\textit{#1}}
 
 \newcommand{\printtableofcontents}{
 	\begingroup\makeatletter\let\ps@fancy\ps@plain\tableofcontents\clearpage\endgroup
