@@ -1,3 +1,14 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	TODO:
+%		no ibidem when fullcite is used
+%		strange layout on last page of the bib reference (overlap)
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{dissertation}
 
@@ -113,7 +124,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\RequirePackage[backend=biber, style=authortitle-ibid, hyperref=true, isbn=false, doi=false, ibidpage=true]{biblatex}
+\RequirePackage[backend=biber, style=verbose-ibid, hyperref=true, isbn=false, doi=false, ibidpage=true, citetracker]{biblatex}
 
 \addbibresource{citavi/literatur.bib}
 
@@ -167,11 +178,8 @@
 	\begingroup\makeatletter\let\ps@fancy\ps@plain\tableofcontents\clearpage\endgroup
 }
 
-\RequirePackage{xargs}
-
-%\newcommandx{\parenfullcite}[3][1, 2]{(\fullcite[#2][#1]{#3})}
-
-\newcommandx{\parenfullcite}[3][1, 2]{(\ifthenelse{\equal{#2}{}}{\fullcite[#1]{#3}}{\fullcite[#1][#2]{#3}})}
+%\RequirePackage{xargs}
+%\newcommandx{\parenfullcite}[3][1, 2]{(\ifthenelse{\equal{#2}{}}{\fullcite[#1]{#3}}{\fullcite[#1][#2]{#3}})}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
