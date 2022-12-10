@@ -128,6 +128,7 @@
 
 \RequirePackage[backend=biber, style=verbose-ibid, hyperref=true, isbn=false, doi=false, ibidpage=true, citetracker]{biblatex}
 
+%\addbibresource{jabref/literatur.bib}
 \addbibresource{citavi/literatur.bib}
 
 \AtEveryCitekey{\clearlist{publisher}}
@@ -150,7 +151,7 @@
   \setunit*{\space}%
   \usebibmacro{date}%
   \newunit}
-  
+
 \renewbibmacro*{cite}{%
 	\usebibmacro{cite:citepages}%
 	\global\togglefalse{cbx:loccit}%
