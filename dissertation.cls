@@ -1,11 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%	TODO:
-%		no ibidem when fullcite is used
-%		strange layout on last page of the bib reference (overlap)
+% MARC & STEFANIE UEBERALL
 %
-%
-%
+% CREATED WITH A SHITLOAD OF COPY-PASTA FROM STACKEXCHANGE
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -16,8 +13,6 @@
 \ProcessOptions\relax
 
 \LoadClass[a4paper, 12pt]{book}
-
-\RequirePackage{graphicx}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -43,6 +38,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\RequirePackage{graphicx}
 \RequirePackage{lipsum}
 
 \newenvironment{abstract}{}{}
@@ -54,7 +50,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\RequirePackage[breaklinks=true,colorlinks=true,linkcolor=black,anchorcolor=black,citecolor=black,filecolor=black,menucolor=black,runcolor=black,urlcolor=black,hyperfootnotes=false]{hyperref}
+\RequirePackage[hyperfootnotes=false,breaklinks=true,colorlinks=true,linkcolor=black,anchorcolor=black,citecolor=black,filecolor=black,menucolor=black,runcolor=black,urlcolor=black]{hyperref}
 
 \RequirePackage{url}
 \urlstyle{same}
@@ -117,6 +113,10 @@
 
 \RequirePackage[hang, flushmargin]{footmisc}
 
+\RequirePackage{footnote}
+\makesavenoteenv{tabular}
+\makesavenoteenv{table}
+
 \RequirePackage{chngcntr}
 \counterwithout{footnote}{chapter}
 
@@ -130,6 +130,9 @@
 
 \addbibresource{citavi/literatur.bib}
 
+\AtEveryCitekey{\clearlist{publisher}}
+\AtEveryBibitem{\clearlist{publisher}}
+
 \DeclareFieldFormat*{title}{#1}
 \DeclareFieldFormat*{citetitle}{#1}
 
@@ -137,6 +140,31 @@
 \DeclareFieldFormat*{citebooktitle}{#1}
 
 \DeclareNameAlias{sortname}{first-last}
+
+\renewbibmacro*{publisher+location+date}{%
+  \printlist{location}%
+  \iflistundef{publisher}
+    {\setunit*{\space}}
+    {\setunit*{\addcolon\space}}%
+  \printlist{publisher}%
+  \setunit*{\space}%
+  \usebibmacro{date}%
+  \newunit}
+  
+\renewbibmacro*{cite}{%
+	\usebibmacro{cite:citepages}%
+	\global\togglefalse{cbx:loccit}%
+	\ifciteseen
+		{\iffieldundef{shorthand}
+			{\ifboolexpr{
+				test {\ifciteibid}
+				and
+				not test {\iffirstonpage}
+			}
+			{\usebibmacro{cite:ibid}}
+			{\usebibmacro{cite:full}}}
+		{\usebibmacro{cite:shorthand}}}
+	{\usebibmacro{cite:full}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -182,6 +210,7 @@
 
 %\RequirePackage{xargs}
 %\newcommandx{\parenfullcite}[3][1, 2]{(\ifthenelse{\equal{#2}{}}{\fullcite[#1]{#3}}{\fullcite[#1][#2]{#3}})}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
