@@ -133,11 +133,16 @@
 \AtEveryCitekey{\clearlist{publisher}}
 \AtEveryBibitem{\clearlist{publisher}}
 
+\AtEveryCitekey{\ifentrytype{article}{\clearfield{url}}{}}
+\AtEveryBibitem{\ifentrytype{article}{\clearfield{url}}{}}
+
 \DeclareFieldFormat*{title}{#1}
 \DeclareFieldFormat*{citetitle}{#1}
 
 \DeclareFieldFormat*{booktitle}{#1}
 \DeclareFieldFormat*{citebooktitle}{#1}
+
+\DeclareFieldFormat{journaltitle}{#1}
 
 \DeclareNameAlias{sortname}{first-last}
 
@@ -207,10 +212,6 @@
 \newcommand{\printtableofcontents}{
 	\begingroup\makeatletter\let\ps@fancy\ps@plain\tableofcontents\clearpage\endgroup
 }
-
-%\RequirePackage{xargs}
-%\newcommandx{\parenfullcite}[3][1, 2]{(\ifthenelse{\equal{#2}{}}{\fullcite[#1]{#3}}{\fullcite[#1][#2]{#3}})}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
