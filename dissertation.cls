@@ -128,8 +128,7 @@
 
 \RequirePackage[backend=biber, style=verbose-ibid, hyperref=true, isbn=false, doi=false, ibidpage=true, citetracker]{biblatex}
 
-%\addbibresource{jabref/literatur.bib}
-\addbibresource{citavi/literatur.bib}
+\addbibresource{jabref/literatur.bib}
 
 \AtEveryCitekey{\clearlist{publisher}}
 \AtEveryBibitem{\clearlist{publisher}}
