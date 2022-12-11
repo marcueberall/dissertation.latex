@@ -126,7 +126,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\RequirePackage[backend=biber, style=verbose-ibid, hyperref=true, isbn=false, doi=false, ibidpage=true, citetracker]{biblatex}
+\RequirePackage[backend=biber, style=verbose-ibid, hyperref=true, isbn=false, doi=false, ibidpage=true, citetracker, citepages=separate]{biblatex}
 
 \addbibresource{jabref/literatur.bib}
 
