@@ -136,6 +136,15 @@
 \AtEveryCitekey{\ifentrytype{article}{\clearfield{url}}{}}
 \AtEveryBibitem{\ifentrytype{article}{\clearfield{url}}{}}
 
+\AtEveryCitekey{\ifentrytype{book}{\clearfield{series}\clearfield{volume}}{}}
+\AtEveryBibitem{\ifentrytype{book}{\clearfield{series}\clearfield{volume}}{}}
+
+\AtEveryCitekey{\ifentrytype{incollection}{\clearfield{series}}{}}
+\AtEveryBibitem{\ifentrytype{incollection}{\clearfield{series}}{}}
+
+\AtEveryCitekey{\ifentrytype{online}{\clearfield{year}}{}}
+\AtEveryBibitem{\ifentrytype{online}{\clearfield{year}}{}}
+
 \DeclareFieldFormat*{title}{#1}
 \DeclareFieldFormat*{citetitle}{#1}
 
@@ -170,6 +179,75 @@
 			{\usebibmacro{cite:full}}}
 		{\usebibmacro{cite:shorthand}}}
 	{\usebibmacro{cite:full}}}
+
+
+\RequirePackage{xpatch}
+
+\xpatchbibdriver{article}
+	{\usebibmacro{title}%
+	\newunit}
+	{\usebibmacro{title}%
+	\printunit{\addcomma\space}}
+	{}
+	{}
+
+\xpatchbibdriver{incollection}
+	{\usebibmacro{title}%
+	\newunit}
+	{\usebibmacro{title}%
+	\printunit{\addcomma\space}}
+	{}
+	{}
+
+\xpatchbibdriver{incollection}
+	{\usebibmacro{maintitle+booktitle}%
+	\newunit}
+	{\usebibmacro{maintitle+booktitle}%
+	\printunit{\addcomma\space}}
+	{}
+	{}
+
+\xpatchbibdriver{incollection}
+	{\usebibmacro{byeditor+others}%
+	\newunit}
+	{\usebibmacro{byeditor+others}%
+	\printunit{\addcomma\space}}
+	{}
+	{}
+
+\xpatchbibdriver{inbook}
+	{\usebibmacro{title}%
+	\newunit}
+	{\usebibmacro{title}%
+	\printunit{\addcomma\space}}
+	{}
+	{}
+
+\xpatchbibdriver{book}
+	{\usebibmacro{maintitle+title}%
+	\newunit}
+	{\usebibmacro{maintitle+title}%
+	\printunit{\addcomma\space}}
+	{}
+	{}
+
+\xpatchbibdriver{online}
+	{\usebibmacro{title}%
+	\newunit}
+	{\usebibmacro{title}%
+	\printunit{\addcomma\space}}
+	{}
+	{}
+
+\xpatchbibdriver{online}
+	{\usebibmacro{byeditor+others}%
+	\newunit}
+	{\usebibmacro{byeditor+others}%
+	\printunit{\addcomma\space}}
+	{}
+	{}
+
+\renewcommand*{\labelnamepunct}{\addcolon\space}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
