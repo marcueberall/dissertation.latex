@@ -130,17 +130,21 @@
 
 \addbibresource{jabref/literatur.bib}
 
+\DefineBibliographyStrings{german}{
+	andothers = {{et al\adddot}},
+}
+
 \AtEveryCitekey{\clearlist{publisher}}
 \AtEveryBibitem{\clearlist{publisher}}
 
 \AtEveryCitekey{\ifentrytype{article}{\clearfield{url}}{}}
 \AtEveryBibitem{\ifentrytype{article}{\clearfield{url}}{}}
 
-\AtEveryCitekey{\ifentrytype{book}{\clearfield{series}\clearfield{volume}}{}}
-\AtEveryBibitem{\ifentrytype{book}{\clearfield{series}\clearfield{volume}}{}}
+\AtEveryCitekey{\ifentrytype{book}{\clearfield{series}\clearfield{volume}\clearfield{url}}{}}
+\AtEveryBibitem{\ifentrytype{book}{\clearfield{series}\clearfield{volume}\clearfield{url}}{}}
 
-\AtEveryCitekey{\ifentrytype{incollection}{\clearfield{series}}{}}
-\AtEveryBibitem{\ifentrytype{incollection}{\clearfield{series}}{}}
+\AtEveryCitekey{\ifentrytype{incollection}{\clearfield{series}\clearfield{volume}}{}}
+\AtEveryBibitem{\ifentrytype{incollection}{\clearfield{series}\clearfield{volume}}{}}
 
 \AtEveryCitekey{\ifentrytype{online}{\clearfield{year}}{}}
 \AtEveryBibitem{\ifentrytype{online}{\clearfield{year}}{}}
@@ -227,6 +231,14 @@
 	{\usebibmacro{maintitle+title}%
 	\newunit}
 	{\usebibmacro{maintitle+title}%
+	\printunit{\addcomma\space}}
+	{}
+	{}
+
+\xpatchbibdriver{book}
+	{\usebibmacro{byeditor+others}%
+	\newunit}
+	{\usebibmacro{byeditor+others}%
 	\printunit{\addcomma\space}}
 	{}
 	{}
