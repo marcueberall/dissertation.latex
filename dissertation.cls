@@ -12,7 +12,9 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
 
-\LoadClass[a4paper, 12pt]{book}
+% Added the 'oneside' tag to force deletion of the blank page after all \part commands. This might get us into trouble when the
+% university demands a print version with different margins on odd and even pages.
+\LoadClass[a4paper, 12pt, oneside]{book}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
