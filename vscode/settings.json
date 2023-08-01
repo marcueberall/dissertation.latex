@@ -1,0 +1,148 @@
+{
+    "editor.renderWhitespace": "none",
+    "latex-workshop.intellisense.citation.backend": "biblatex",
+
+    "latex-workshop.latex.recipes": [    
+        {
+            "name": "pdflatex 📄 ➞ biber 🐿️ ➞ pdflatex × 2 📄📄",
+            "tools": [
+                "pdflatex",
+                "biber",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+                "--output-directory=%OUTDIR%",
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "lualatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-lualatex",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "latexmk_rconly",
+            "command": "latexmk",
+            "args": [
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-output-directory=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "rnw2tex",
+            "command": "Rscript",
+            "args": [
+                "-e",
+                "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
+            ],
+            "env": {}
+        },
+        {
+            "name": "jnw2tex",
+            "command": "julia",
+            "args": [
+                "-e",
+                "using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"
+            ],
+            "env": {}
+        },
+        {
+            "name": "jnw2texmintex",
+            "command": "julia",
+            "args": [
+                "-e",
+                "using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
+            ],
+            "env": {}
+        },
+        {
+            "name": "tectonic",
+            "command": "tectonic",
+            "args": [
+                "--synctex",
+                "--keep-logs",
+                "%DOC%.tex"
+            ],
+            "env": {}
+        }
+    ],
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+    "latex-workshop.latex.clean.method": "glob",
+    "latex-workshop.latex.clean.subfolder.enabled": true,
+    "latex-workshop.latex.clean.fileTypes": [
+        "%DOCFILE%.aux",
+        "%DOCFILE%.bbl",
+        "%DOCFILE%.blg",
+        "%DOCFILE%.idx",
+        "%DOCFILE%.ind",
+        "%DOCFILE%.lof",
+        "%DOCFILE%.lot",
+        "%DOCFILE%.out",
+        "%DOCFILE%.toc",
+        "%DOCFILE%.acn",
+        "%DOCFILE%.acr",
+        "%DOCFILE%.alg",
+        "%DOCFILE%.glg",
+        "%DOCFILE%.glo",
+        "%DOCFILE%.gls",
+        "%DOCFILE%.fls",
+        "%DOCFILE%.log",
+        "%DOCFILE%.fdb_latexmk",
+        "%DOCFILE%.snm",
+        "%DOCFILE%.synctex(busy)",
+        "%DOCFILE%.synctex.gz(busy)",
+        "%DOCFILE%.nav",
+        "%DOCFILE%.vrb",
+        "*/*.aux",
+        "*/*.log"
+    ],
+}
